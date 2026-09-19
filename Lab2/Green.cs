@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Timers;
-
+using System.Numerics;
 namespace Lab2
 {
     public class Green
@@ -11,111 +9,148 @@ namespace Lab2
         public double Task1(int n)
         {
             double answer = 0;
+        for (double i = 2; i <= n; i += 2)
+        {
+            answer += i / (i + 1);
+        }
+        // end
 
-            // code here
-            for (int i = 0; i <= n; i++) { answer += n / (n + 1); }
-            // end
-
-            return answer;
+        return answer;
         }
         public double Task2(int n, double x)
         {
             double answer = 0;
-
+    
             // code here
-            for (int i = 0; i <= n; i++) { answer += Math.Pow(x, (n * (-1); }
+            double term = 1;
+            for (int i = 0;i <= n; i++)
+            {
+                answer += term;
+                term = term / x;
+            }
+    
             // end
-
+    
             return answer;
         }
         public long Task3(int n)
         {
             long answer = 0;
-
+    
             // code here
-            if (n == 0) { answer = 1; }
-            else
+            long factorial = 1;
+            answer += factorial;
+            for (int i = 1; i <= n; i++)
             {
-                answer = 1;
-                
+                factorial *= i;
+                answer += factorial;
             }
+    
             // end
-
+    
             return answer;
         }
         public double Task4(double x)
         {
             double answer = 0;
-
+    
             // code here
-            double lastSum = 50.0;
-            for (int n = 0; n++)
+            int n = 1;
+            double power = 1;
+            power *= x;
+            double term  = Math.Sin(n * power);
+            while (Math.Abs(term) >= E)
             {
-                if (Math.Abs(lastSum) < E)
-                {
-                    return answer;
-                }
-                el = Math.Sin(n * Math.Pow(x, n));
-                lastSum = el;
+                answer += term;
+                n += 1;
+                power *= x;
+                term = Math.Sin(n * power);
             }
-            // end
-
-            return answer;
+    
+    
+                // end
+    
+                return answer;
         }
         public int Task5(double x)
         {
             int answer = 0;
-
+    
             // code here
-            int n = 0;
-            while (Math.Abs(((1 / Math.Pow(x, n) - (1 / Math.Pow(x, n - 1))) >= E) {
+            double previous = 1; 
+            double current = previous / x; 
+            int n = 1;
+            while (Math.Abs(current - previous) >= E)
+            {
+                previous = current;
+                current = previous / x;
                 n += 1;
             }
             answer = n;
+    
             // end
-
+    
             return answer;
         }
         public int Task6(int limit)
         {
             int answer = 0;
-
+    
             // code here
             int elem = 1;
-            for (int i = 0; elem < limit; i++)
+            for(int i = 0; elem < limit; i++)
             {
                 elem *= 2;
                 answer += elem;
             }
+    
             // end
-
+    
             return answer;
         }
-
+    
         public int Task7(double L)
         {
             int answer = 0;
-
+    
             // code here
+            int count = 0;
             while (L > Da)
             {
-                L /= 2;
-                answer += 1;
+                L = L / 2;
+                count ++;
             }
+            answer = count;
+    
             // end
-
+    
             return answer;
         }
         public (double SS, double SY) Task8(double a, double b, double h)
         {
             double SS = 0;
             double SY = 0;
-
+    
             // code here
-
-            // end
-
-            return (SS, SY);
+            for (double x = a; x <= b + E; x += h)
+            {
+                double S = 0;
+                double term = x;
+                int i = 0;
+                while (Math.Abs(term) >= E)
+                {
+                    S += term;
+                    term *= -x * x;
+                    term *= (2.0 * i + 1) / (2.0 * i + 3);
+                    i++;
+                }
+                S += term;
+                SS += S;
+                SY += Math.Atan(x);
+            }
+                // end
+    
+                return (SS, SY);
         }
     }
 }
